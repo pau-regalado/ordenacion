@@ -16,19 +16,19 @@ void sort(StaticSequence<Key>& sequence, int size, int delta){
       j = j - delta;
     }
     sequence[Position(j)] = x;
-    //mostrar_v(sequence);
+    mostrar_v(sequence);
   }
 }
 
 template <class Key>
-void incr_dec(StaticSequence<Key> sequence, int size, float alpha){
+void incr_dec(StaticSequence<Key>& sequence, int size, float alpha){
   int delta = size;
-  while(delta > 1){
+  while (delta > 1){
     delta = int(delta * alpha);
     if (delta < 1) {
       delta = 1;
     }
-    sort(sequence, delta, size);
+    sort(sequence, size, delta);
   }
 }
 

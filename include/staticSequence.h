@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <iostream>
+#include <random>
 #include "sequence.h"
  
 template <class Key>
@@ -21,8 +22,13 @@ class StaticSequence: public Sequence<Key>{
     }
 
     void randomInitializing() {
+      const int MAX_INT = 9999;
+      const int MIN_INT = 1000;
+      std::random_device rd;
+      std::mt19937 gen(rd());
+      std::uniform_int_distribution<int> dis(MIN_INT, MAX_INT);
       for (int i = 0; i < this->size; i++) {
-        self[i] = Key(std::rand());
+        self[i] = Key(dis(gen));
       }
     }
 

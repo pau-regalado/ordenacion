@@ -21,7 +21,7 @@ void radixSort(StaticSequence<Key>& sequence, int size){
         sequence[index++] = Key(cubetas[k][l]);
       }
     }
-    //mostrar_v(sequence);
+    mostrar_v(sequence);
   }
 }
 #endif

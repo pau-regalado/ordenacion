@@ -5,13 +5,14 @@
 #include <fstream>
 #include <string.h>
 
-#include "../include/quickSortMethod.h"
-#include "../include/incrDecMethod.h"
-#include "../include/heapSortMethod.h"
-#include "../include/seleccionMethod.h"
-#include "../include/radixSortMethod.h"
+#include "quickSortMethod.h"
+#include "incrDecMethod.h"
+#include "heapSortMethod.h"
+#include "seleccionMethod.h"
+#include "radixSortMethod.h"
+#include "commons.h"
 
-typedef long Key;
+typedef int Key;
 
 enum ordTypes { INCRDEC, HEAP, SELECCION, RADIX, QUICK };
 enum initTypes { MANUAL, RANDOM };
@@ -74,67 +75,72 @@ void Simulator::run(int argc, char* argv[]) {
         
       } 
     }
+  }
 
-    if (!filename.empty()) {
-      switch (orderType) {
-        case ordTypes::INCRDEC: {
-          ord = new IncrDecMethod<Key>(filename);          
-          break;
-        };
-        case ordTypes::HEAP: {
-          ord = new HeapSortMethod<Key>(filename);         
-          break;
-        };
-        case ordTypes::SELECCION: {
-          ord = new SeleccionMethod<Key>(filename);
-          break;
-        };
-        case ordTypes::RADIX: {
-          ord = new RadixSortMethod<Key>(filename); 
-          break;
-        };
-        case ordTypes::QUICK: {
-          ord = new QuickSortMethod<Key>(filename);
-          break;
-        };
-      default:
-        break;
-      }
-    } else if (initType == initTypes::MANUAL) {
-      sequence = new StaticSequence<Key>(size);
-      sequence->manualInitializing();
-    } else if (initType == initTypes::RANDOM) {
-      sequence = new StaticSequence<Key>(size);
-      sequence->randomInitializing();
-    } else {
-      throw std::exception();
-    }
-
+  if (!filename.empty()) {
     switch (orderType) {
       case ordTypes::INCRDEC: {
-        ord = new IncrDecMethod<Key>(*sequence, size, 0.8);          
+        ord = new IncrDecMethod<Key>(filename);          
         break;
       };
       case ordTypes::HEAP: {
-        ord = new HeapSortMethod<Key>(*sequence, size);         
+        ord = new HeapSortMethod<Key>(filename);         
         break;
       };
       case ordTypes::SELECCION: {
-        ord = new SeleccionMethod<Key>(*sequence, size);
+        ord = new SeleccionMethod<Key>(filename);
         break;
       };
       case ordTypes::RADIX: {
-        ord = new RadixSortMethod<Key>(*sequence, size); 
+        ord = new RadixSortMethod<Key>(filename); 
         break;
       };
       case ordTypes::QUICK: {
-        ord = new QuickSortMethod<Key>(*sequence, size);
+        ord = new QuickSortMethod<Key>(filename);
         break;
       };
     default:
+        ord = new SeleccionMethod<Key>(filename);
       break;
     }
+  } else if (initType == initTypes::MANUAL) {
+    sequence = new StaticSequence<Key>(size);
+    sequence->manualInitializing();
+  } else if (initType == initTypes::RANDOM) {
+    sequence = new StaticSequence<Key>(size);
+    std::cout << "VOOOOOOOOOOOOOOOOOOOOOOOOOYYYY" << std::endl;
+    sequence->randomInitializing();
+  } else {
+    throw std::exception();
   }
+
+  switch (orderType) {
+    case ordTypes::INCRDEC: {
+      ord = new IncrDecMethod<Key>(*sequence, size, 0.2);          
+      break;
+    };
+    case ordTypes::HEAP: {
+      ord = new HeapSortMethod<Key>(*sequence, size);         
+      break;
+    };
+    case ordTypes::SELECCION: {
+      ord = new SeleccionMethod<Key>(*sequence, size);
+      break;
+    };
+    case ordTypes::RADIX: {
+      ord = new RadixSortMethod<Key>(*sequence, size); 
+      break;
+    };
+    case ordTypes::QUICK: {
+      ord = new QuickSortMethod<Key>(*sequence, size);
+      break;
+    };
+  default:
+      ord = new SeleccionMethod<Key>(*sequence, size);
+    break;
+  }
+
+  mostrar_v(*sequence);
   std::cout << "VOY A ORDENAR" << std::endl;
   ord->Sort();
   std::cout << "YA ORDENE" << std::endl;

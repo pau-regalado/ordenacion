@@ -1,12 +1,12 @@
 #ifndef __QUICKSORT__
-#define _QUICKSORT_
+#define __QUICKSORT__
 
 #include "staticSequence.h"
 
 template <typename Key>
 void quicksort(StaticSequence<Key>& sequence, unsigned ini, unsigned fin){
   int i = ini, f = fin;
-  int pivote = long(sequence[Position((i+f)/2)]);
+  long pivote = long(sequence[Position((i+f)/2)]);
   std::cout << "PIV " << pivote << std::endl;
 
   while (i <= f){ 
@@ -18,14 +18,14 @@ void quicksort(StaticSequence<Key>& sequence, unsigned ini, unsigned fin){
       i++;
       f--;
     }
-    //mostrar_v(sequence);
+    mostrar_v(sequence);
   }
 
   if (i < 0) { i = 0; }
   if (f >= sequence.getSize()) { f = sequence.getSize() - 1; }
   std::cout << "i = " << i << " f = " << f << std::endl;
 
-  if (ini < f){ quicksort(sequence,ini,f); }
+  if (ini < f){ quicksort(sequence, ini, f); }
   if (i < fin){ quicksort(sequence, i, fin); }
 }
 

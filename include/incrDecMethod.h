@@ -11,9 +11,9 @@ class IncrDecMethod: public SortMethod<Key>{
     float alpha_;
   public:
     IncrDecMethod(StaticSequence<Key>& s, unsigned size, float alpha): SortMethod<Key>(s, size), alpha_(alpha) {}
-    IncrDecMethod(std::string filename): SortMethod<Key>(filename) {}
+    IncrDecMethod(std::string filename): SortMethod<Key>(filename), alpha_(0.6) {}
     void Sort() {
-      incr_dec(this->sequence, alpha_, this->size);
+      incr_dec(this->sequence, this->size, alpha_);
     }
   
 };

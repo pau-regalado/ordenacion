@@ -8,7 +8,7 @@
 #include <chrono>
 
 #include "../include/simulator.h"
-
+/*
 const int MAX_INT = 9999;
 const int MIN_INT = 1000;
 
@@ -18,6 +18,7 @@ void fillRandVector (std::vector<Clave>* vector) {
     vector->at(i) = MIN_INT + rand() % (MAX_INT - MIN_INT);
   }
 }
+*/
 
 int main (int argc, char* argv[]){
   Simulator simulator;

@@ -8,7 +8,6 @@
 #include "position.h"
 #include "staticSequence.h"
 
-//Recibe un puntero al vector a ordenar y su tamaño y lo ordena.
 template <class Key>
 void mostrar_v(StaticSequence<Key>& sequence){
   std::cout << "< ";
