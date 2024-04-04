@@ -4,31 +4,31 @@
 #include "staticSequence.h"
 
 template <class Key>
-void sort(StaticSequence<Key>* vector, int delta, int size){
+void sort(StaticSequence<Key>& sequence, int delta, int size){
   Key x; 
   int j;
   //std::cout << " delta = " << delta << std::endl;
   for(int i = delta; i < size; i++){
-    x = vector->at(i);
+    x = sequence.at(i);
     j = i;
-    while ((j >= delta) && (x < vector->at(j - delta))){  
-      vector->at(j) = vector->at(j - delta);
+    while ((j >= delta) && (x < sequence.at(j - delta))){  
+      sequence.at(j) = sequence.at(j - delta);
       j = j - delta;
     }
-    vector->at(j) = x;
-    //mostrar_v(vector);
+    sequence.at(j) = x;
+    //mostrar_v(sequence);
   }
 }
 
 template <class Key>
-void incr_dec(StaticSequence<Key>* vector, float alpha, int size){
+void incr_dec(StaticSequence<Key>* sequence, float alpha, int size){
   int delta = size;
   while(delta > 1){
     delta = int(delta * alpha);
     if (delta < 1) {
       delta = 1;
     }
-    sort(vector, delta, size);
+    sort(sequence, delta, size);
   }
 }
 

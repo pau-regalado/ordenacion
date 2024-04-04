@@ -5,24 +5,24 @@
 #include "staticSequence.h"
 
 template <class Key>
-void seleccionar(StaticSequence<Key>* vector, int size){
-  for(int i = 0; i < vector->size() - 1; i++){
+void seleccionar(StaticSequence<Key>& sequence, int size){
+  for(int i = 0; i < sequence.size() - 1; i++){
     int min = i;
-    for(int j = i + 1; j < vector->size(); j++){
-      if (vector->at(j) < vector->at(min)){
+    for(int j = i + 1; j < sequence.size(); j++){
+      if (sequence.at(j) < sequence.at(min)){
         min = j;
       }
     }
-    swap(vector,min,i);
-    //mostrar_v(vector);
+    swap(sequence,min,i);
+    //mostrar_v(sequence);
   }
 }
 
 template <class Key>
-void seleccion(StaticSequence<Key>* vector,int size){
+void seleccion(StaticSequence<Key>* sequence,int size){
   for(int i = 0; i < size - 1; i++){
-    seleccionar(vector, i);
-    //mostrar_v(vector);
+    seleccionar(sequence, i);
+    //mostrar_v(sequence);
   }
 }
 

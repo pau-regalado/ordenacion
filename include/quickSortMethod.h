@@ -2,14 +2,15 @@
 #define _QUICKSORTMETHOD_
 
 #include "commons.h"
+#include "quickSort.h"
+
 template <class Key>
 class QuickSortMethod: public SortMethod<Key>{
-  private:
   public:
-    QuickSortMethod(StaticSequence<Key>* v, unsigned ini, unsigned fin): SortMethod<Key>{ v, ini, fin} {}
-    QuickSortMethod(std::string filename): SortMethod<Key>{ filename } {}
+    QuickSortMethod(StaticSequence<Key>& s, unsigned size): SortMethod<Key>(s, size) {}
+    QuickSortMethod(std::string filename): SortMethod<Key>(filename) {}
     void Sort() {
-      quicksort(this->seq_, this->ini, this->fin);
+      quicksort(this->seq_, 0, this->size);
     }
 };
 

@@ -7,10 +7,10 @@
 template <class Key>
 class SeleccionMethod: public SortMethod<Key>{
   public:
-    SeleccionMethod(StaticSequence<Key>* v, unsigned size): SortMethod<Key>{ v, size } {}
-    SeleccionMethod(std::string filename): SortMethod<Key>{ filename } {}
+    SeleccionMethod(StaticSequence<Key>& sequence, unsigned size): SortMethod<Key>(sequence, size) {}
+    SeleccionMethod(std::string filename): SortMethod<Key>(filename) {}
     void Sort() {
-      seleccion(this->seq_, this->size_);
+      seleccion(this->seq_, this->size);
     }   
 };
 

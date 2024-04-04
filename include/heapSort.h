@@ -4,7 +4,7 @@
 #include "staticSequence.h"
 
 template <class Key>
-void baja(StaticSequence<Key>* vector, int index, int size){
+void baja(StaticSequence<Key>& sequence, int index, int size){
 
   while(2 * index <= size){
     int h1 = 2 * index;
@@ -12,28 +12,28 @@ void baja(StaticSequence<Key>* vector, int index, int size){
     int h;
 
     if (h1 == size){ h = h1;
-    } else if(vector->at(h1 - 1) > vector->at(h2 - 1)){ h = h1; }
+    } else if(sequence.at(h1 - 1) > sequence.at(h2 - 1)){ h = h1; }
     else { h = h2; }
 
-    if(vector->at(h - 1) <= vector->at(index - 1)){
+    if(sequence.at(h - 1) <= sequence.at(index - 1)){
       break;
     }else{
-      swap(vector, index - 1, h - 1);
+      swap(sequence, index - 1, h - 1);
       index = h;
     }
-    // mostrar_v(vector);
+    // mostrar_v(sequence);
   }
 }
 
 template <class Key>
-void heapsort(StaticSequence<Key>* vector, int size){
+void heapsort(StaticSequence<Key>* sequence, int size){
   for (int i = size / 2; i > 0; i--){
-    baja(vector, i, size - 1);
+    baja(sequence, i, size - 1);
   }
 
   for (int i = size; i > 1; i--){
-    swap(vector, 1 - 1, i - 1);
-    baja(vector, 1, i - 1);
+    swap(sequence, 1 - 1, i - 1);
+    baja(sequence, 1, i - 1);
   }
 }
 

@@ -12,12 +12,12 @@
 template<class Key>
 class SortMethod {
   protected:
-    unsigned size_;
+    unsigned size;
     StaticSequence<Key> sequence;
     int timer_;
 
   public:
-    SortMethod(StaticSequence<Key>& s, unsigned size): sequence(s), size_(size) {}
+    SortMethod(StaticSequence<Key>& s, unsigned size): sequence(s), size(size) {}
     SortMethod(std::string filename);
     virtual void Sort() = 0;
     

@@ -16,13 +16,13 @@ class StaticSequence: public Sequence<Key>{
 
     ~StaticSequence(void) {}
 
-    Key operator[](const Position&) const override {
+    Key operator[](const Position& p) const override {
       return self.at(p.getX());
     }
 
     void randomInitializing() {
       for (int i = 0; i < this->size; i++) {
-        this->operator[i] = Key(std::rand());
+        self[i] = Key(std::rand());
       }
     }
 
@@ -32,7 +32,7 @@ class StaticSequence: public Sequence<Key>{
       for (int i = 0; i < this->size; i++) {
         std::cout << "Enter " << i << " element> ";
         std::cin >> value;
-        this->operator[i] = Key(value);
+        self[i] = Key(value);
       }
     }
 

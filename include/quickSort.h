@@ -4,29 +4,29 @@
 #include "staticSequence.h"
 
 template <typename Key>
-void quicksort(StaticSequence<Key>* vector, unsigned ini, unsigned fin){
+void quicksort(StaticSequence<Key>& sequence, unsigned ini, unsigned fin){
   int i = ini, f = fin;
-  int pivote = vector->at((i+f)/2);
+  int pivote = sequence.at((i+f)/2);
   std::cout << "PIV " << pivote << std::endl;
 
   while (i <= f){ 
-    while (vector->at(i) < pivote){ i++;}
-    while (vector->at(f) > pivote){ f--;}
+    while (sequence.at(i) < pivote){ i++;}
+    while (sequence.at(f) > pivote){ f--;}
 
     if (i <= f) {
-      swap(vector,i,f);
+      swap(sequence,i,f);
       i++;
       f--;
     }
-    //mostrar_v(vector);
+    //mostrar_v(sequence);
   }
 
   if (i < 0) { i = 0; }
-  if (f >= vector->size()) { f = vector->size() - 1; }
+  if (f >= sequence.size()) { f = sequence.size() - 1; }
   std::cout << "i = " << i << " f = " << f << std::endl;
 
-  if (ini < f){ quicksort(vector,ini,f); }
-  if (i < fin){ quicksort(vector, i, fin); }
+  if (ini < f){ quicksort(sequence,ini,f); }
+  if (i < fin){ quicksort(sequence, i, fin); }
 }
 
 #endif

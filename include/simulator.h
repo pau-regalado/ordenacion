@@ -109,19 +109,19 @@ void Simulator::run(int argc, char* argv[]) {
 
     switch (orderType) {
         case ordTypes::INCRDEC: {
-          ord = new IncrDecMethod<Key>(sequence, 0.8, size);          
+          ord = new IncrDecMethod<Key>(*sequence, size, 0.8);          
           break;
         };
         case ordTypes::HEAP: {
-          ord = new HeapSortMethod<Key>(sequence, size);         
+          ord = new HeapSortMethod<Key>(*sequence, size);         
           break;
         };
         case ordTypes::SELECCION: {
-          ord = new SeleccionMethod<Key>(sequence, size);
+          ord = new SeleccionMethod<Key>(*sequence, size);
           break;
         };
         case ordTypes::RADIX: {
-          ord = new RadixSortMethod<Key>(sequence, size); 
+          ord = new RadixSortMethod<Key>(*sequence, size); 
           break;
         };
         case ordTypes::QUICK: {
