@@ -10,7 +10,7 @@ LIB     		:= lib
 LIBRARIES   :=
 
 EXECUTABLE  := run
-PARAMS    	:= -size 10 -ord quick -init data1.txt
+PARAMS    	:= -size 10 -ord seleccion -init random
 PARAMSOPEN  := -ts 5 -fd suma -hash open
 
 SOURCES := $(wildcard $(SRC)/*.cc)

@@ -5,20 +5,23 @@
 #include <vector>
 #include <climits>
 
+#include "position.h"
+#include "staticSequence.h"
+
 //Recibe un puntero al vector a ordenar y su tamaño y lo ordena.
-template <class Clave>
-void mostrar_v(std::vector<Clave>* v){
+template <class Key>
+void mostrar_v(StaticSequence<Key>& sequence){
   std::cout << "< ";
-  for (int i = 0; i < v->size(); ++i)
-    std::cout << v->at(i) << " ";
+  for (int i = 0; i < sequence.getSize(); ++i)
+    std::cout << sequence[Position(i)] << " ";
   std::cout << ">" << std::endl;
 }
 
-template <class Clave>
-void swap(std::vector<Clave>* vector, int x, int y){
-  Clave aux = vector->at(x);
-  vector->at(x) = vector->at(y);
-  vector->at(y) = aux; 
+template <class Key>
+void swap(StaticSequence<Key>& sequence, int x, int y){
+  Key aux = sequence[Position(x)];
+  sequence[Position(x)] = sequence[Position(y)];
+  sequence[Position(y)] = aux; 
 }
 
 #endif

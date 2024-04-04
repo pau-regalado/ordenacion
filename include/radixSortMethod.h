@@ -3,6 +3,7 @@
 
 #include "sortMethod.h"
 #include "radixSort.h"
+#include "commons.h"
 
 template <class Key>
 class RadixSortMethod: public SortMethod<Key>{
@@ -10,7 +11,7 @@ class RadixSortMethod: public SortMethod<Key>{
   RadixSortMethod(StaticSequence<Key>& sequence, unsigned size): SortMethod<Key>(sequence, size) {}
   RadixSortMethod(std::string filename): SortMethod<Key>(filename) {}
     void Sort() {
-      radixSort(this->seq_, this->size);
+      radixSort(this->sequence, this->size);
     }
 };
 

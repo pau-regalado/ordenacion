@@ -12,10 +12,10 @@ void baja(StaticSequence<Key>& sequence, int index, int size){
     int h;
 
     if (h1 == size){ h = h1;
-    } else if(sequence.at(h1 - 1) > sequence.at(h2 - 1)){ h = h1; }
+    } else if (sequence[Position(h1 - 1)] > sequence[Position(h2 - 1)]) { h = h1; }
     else { h = h2; }
 
-    if(sequence.at(h - 1) <= sequence.at(index - 1)){
+    if(sequence[Position(h - 1)] <= sequence[Position(index - 1)]){
       break;
     }else{
       swap(sequence, index - 1, h - 1);
@@ -26,7 +26,7 @@ void baja(StaticSequence<Key>& sequence, int index, int size){
 }
 
 template <class Key>
-void heapsort(StaticSequence<Key>* sequence, int size){
+void heapsort(StaticSequence<Key>& sequence, int size){
   for (int i = size / 2; i > 0; i--){
     baja(sequence, i, size - 1);
   }

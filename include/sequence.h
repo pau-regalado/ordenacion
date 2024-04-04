@@ -4,9 +4,9 @@
 #include "position.h"
 
 template <class Key>
-class Sequence{
+class Sequence {
   public:
-    virtual Key operator[](const Position&) const = 0;
+    virtual Key& operator[](const Position&) = 0;
 };
 
 #endif

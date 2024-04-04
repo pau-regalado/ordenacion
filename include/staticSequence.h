@@ -16,8 +16,8 @@ class StaticSequence: public Sequence<Key>{
 
     ~StaticSequence(void) {}
 
-    Key operator[](const Position& p) const override {
-      return self.at(p.getX());
+    Key& operator[](const Position& p) {
+      return self[p.getX()];
     }
 
     void randomInitializing() {
@@ -34,6 +34,10 @@ class StaticSequence: public Sequence<Key>{
         std::cin >> value;
         self[i] = Key(value);
       }
+    }
+
+    unsigned getSize() {
+      return size;
     }
 
   private:

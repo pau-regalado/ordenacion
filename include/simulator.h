@@ -1,3 +1,6 @@
+#ifndef __SIMULATOR__
+#define __SIMULATOR__
+
 #include <iostream>
 #include <fstream>
 #include <string.h>
@@ -15,7 +18,7 @@ enum initTypes { MANUAL, RANDOM };
 
 class Simulator {
   public:
-    Simulator::Simulator() {}
+    Simulator() {}
     void run(int argc, char* argv[]);
 }; 
 
@@ -28,7 +31,7 @@ void Simulator::run(int argc, char* argv[]) {
 
   SortMethod<Key>* ord;
   StaticSequence<Key>* sequence;
-  std::string filename = "data";
+  std::string filename = "";
   ordTypes orderType = ordTypes::HEAP;
 
   for (int i = 1; i < argc; ++i) {
@@ -91,7 +94,7 @@ void Simulator::run(int argc, char* argv[]) {
           break;
         };
         case ordTypes::QUICK: {
-          //ord = new QuickSortMethod<Key>(filename);
+          ord = new QuickSortMethod<Key>(filename);
           break;
         };
       default:
@@ -108,28 +111,33 @@ void Simulator::run(int argc, char* argv[]) {
     }
 
     switch (orderType) {
-        case ordTypes::INCRDEC: {
-          ord = new IncrDecMethod<Key>(*sequence, size, 0.8);          
-          break;
-        };
-        case ordTypes::HEAP: {
-          ord = new HeapSortMethod<Key>(*sequence, size);         
-          break;
-        };
-        case ordTypes::SELECCION: {
-          ord = new SeleccionMethod<Key>(*sequence, size);
-          break;
-        };
-        case ordTypes::RADIX: {
-          ord = new RadixSortMethod<Key>(*sequence, size); 
-          break;
-        };
-        case ordTypes::QUICK: {
-          //ord = new QuickSortMethod<Key>(sequence, size);
-          break;
-        };
-      default:
+      case ordTypes::INCRDEC: {
+        ord = new IncrDecMethod<Key>(*sequence, size, 0.8);          
         break;
-      }
+      };
+      case ordTypes::HEAP: {
+        ord = new HeapSortMethod<Key>(*sequence, size);         
+        break;
+      };
+      case ordTypes::SELECCION: {
+        ord = new SeleccionMethod<Key>(*sequence, size);
+        break;
+      };
+      case ordTypes::RADIX: {
+        ord = new RadixSortMethod<Key>(*sequence, size); 
+        break;
+      };
+      case ordTypes::QUICK: {
+        ord = new QuickSortMethod<Key>(*sequence, size);
+        break;
+      };
+    default:
+      break;
+    }
   }
+  std::cout << "VOY A ORDENAR" << std::endl;
+  ord->Sort();
+  std::cout << "YA ORDENE" << std::endl;
 }
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef __NIF__
+#define __NIF__
+
 #include <iostream>
 #include <cstdlib>
 
@@ -36,3 +39,5 @@ public:
     return is;
   }
 };
+
+#endif

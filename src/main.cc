@@ -7,12 +7,7 @@
 #include <algorithm>
 #include <chrono>
 
-#include "../include/quickSort.h"
-#include "../include/incrDec.h"
-#include "../include/heapSort.h"
-#include "../include/seleccion.h"
-#include "../include/radixSort.h"
-#include "../include/staticSequence.h"
+#include "../include/simulator.h"
 
 const int MAX_INT = 9999;
 const int MIN_INT = 1000;
@@ -25,5 +20,6 @@ void fillRandVector (std::vector<Clave>* vector) {
 }
 
 int main (int argc, char* argv[]){
- //StaticSequence seq;
+  Simulator simulator;
+  simulator.run(argc, argv); 
 }

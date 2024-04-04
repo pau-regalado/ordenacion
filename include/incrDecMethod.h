@@ -3,6 +3,7 @@
 
 #include "sortMethod.h"
 #include "incrDec.h"
+#include "commons.h"
 
 template <class Key>
 class IncrDecMethod: public SortMethod<Key>{
@@ -12,7 +13,7 @@ class IncrDecMethod: public SortMethod<Key>{
     IncrDecMethod(StaticSequence<Key>& s, unsigned size, float alpha): SortMethod<Key>(s, size), alpha_(alpha) {}
     IncrDecMethod(std::string filename): SortMethod<Key>(filename) {}
     void Sort() {
-      incr_dec(this->seq_, alpha_, this->size);
+      incr_dec(this->sequence, alpha_, this->size);
     }
   
 };
