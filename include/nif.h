@@ -19,6 +19,8 @@ public:
   long generarAleatorio() { return rand() % 100000000; }
 
   bool operator==(const Nif& otro) const { return num == otro.num; }
+  bool operator<(const Nif& otro) const { return num < otro.num; }
+  bool operator>(const Nif& otro) const { return num > otro.num; }
   Nif& operator=(const Nif& otro) {
     this->setNum(otro.getNum());
     return *this;

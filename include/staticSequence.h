@@ -28,7 +28,7 @@ class StaticSequence: public Sequence<Key>{
       std::mt19937 gen(rd());
       std::uniform_int_distribution<int> dis(MIN_INT, MAX_INT);
       for (int i = 0; i < this->size; i++) {
-        self[i] = Key(dis(gen));
+        self[i] = Key();
       }
     }
 

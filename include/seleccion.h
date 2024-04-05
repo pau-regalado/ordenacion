@@ -6,7 +6,7 @@
 
 template <class Key>
 void seleccionar(StaticSequence<Key>& sequence, int size){
-  for(int i = 0; i < size - 1; i++){
+  for(int i = 0; i < size; i++){
     int min = i;
     for(int j = i + 1; j < size; j++){
       if (sequence[Position(j)] < sequence[Position(min)]){
@@ -20,7 +20,7 @@ void seleccionar(StaticSequence<Key>& sequence, int size){
 
 template <class Key>
 void seleccion(StaticSequence<Key>& sequence, int size){
-  for(int i = 0; i < size - 1; i++){
+  for(int i = 0; i < size; i++){
     seleccionar(sequence, i);
     mostrar_v(sequence);
   }

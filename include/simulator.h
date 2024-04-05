@@ -11,8 +11,9 @@
 #include "seleccionMethod.h"
 #include "radixSortMethod.h"
 #include "commons.h"
+#include "nif.h"
 
-typedef int Key;
+typedef Nif Key;
 
 enum ordTypes { INCRDEC, HEAP, SELECCION, RADIX, QUICK };
 enum initTypes { MANUAL, RANDOM };

@@ -10,7 +10,7 @@ LIB     		:= lib
 LIBRARIES   :=
 
 EXECUTABLE  := run
-PARAMS    	:= -size 15 -ord heap -init random
+PARAMS    	:= -size 15 -ord seleccion -init random
 PARAMSOPEN  := -ts 5 -fd suma -hash open
 
 SOURCES := $(wildcard $(SRC)/*.cc)
