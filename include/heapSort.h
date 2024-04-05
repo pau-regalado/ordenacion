@@ -6,38 +6,34 @@
 template <class Key>
 void baja(StaticSequence<Key>& sequence, int index, int size){
 
-  while(2 * index <= size){
-    int h1 = 2 * index;
-    int h2 = h1+1;
-    int h;
+  int h = index;
+  int h1 = 2 * index + 1;
+  int h2 = h1 + 1;
 
-    if (h1 == size){
-      h = h1;
-    } else if (sequence[Position(h1)] > sequence[Position(h2)]) {
-      h = h1;
-    } else {
-      h = h2;
-    }
+  if (h1 < size && sequence[Position(h1)] > sequence[Position(h)]) {
+    h = h1;
+  }
+  
+  if (h2 < size && sequence[Position(h2)] > sequence[Position(h)]) {
+    h = h2;
+  }
 
-    if(sequence[Position(h)] <= sequence[Position(index)]){
-      break;
-    }else{
-      swap(sequence, index, h);
-      index = h;
-    }
+  if(h != index) {
+    swap(sequence, index, h);
     mostrar_v(sequence);
+    baja(sequence, h, size);
   }
 }
 
 template <class Key>
 void heapsort(StaticSequence<Key>& sequence, int size){
-  for (int i = size / 2; i > 0; i--){
+  for (int i = size / 2; i >= 0; i--){
     baja(sequence, i, size);
   }
 
-  for (int i = size; i > 1; i--){
-    swap(sequence, 1, i);
-    baja(sequence, 1, i - 1);
+  for (int i = size - 1; i > 0; i--){
+    swap(sequence, 0, i);
+    baja(sequence, 0, i);
   }
 }
 
