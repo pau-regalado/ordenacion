@@ -28,7 +28,7 @@ class StaticSequence: public Sequence<Key>{
       std::mt19937 gen(rd());
       std::uniform_int_distribution<int> dis(MIN_INT, MAX_INT);
       for (int i = 0; i < this->size; i++) {
-        self[i] = Key();
+        self[i] = Key(dis(gen)); // Para trabajar con nifs poner solo Key() para llamar a su constrructor aleatorio
       }
     }
 
