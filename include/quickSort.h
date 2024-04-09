@@ -24,6 +24,7 @@ void quicksort(StaticSequence<Key>& sequence, unsigned ini, unsigned fin){
   if (i < 0) { i = 0; }
   if (f >= sequence.getSize()) { f = sequence.getSize() - 1; }
   std::cout << "i = " << i << " f = " << f << std::endl;
+  std::cout << "ini = " << ini << " fin = " << fin << std::endl;
 
   if (ini < f){ quicksort(sequence, ini, f); }
   if (i < fin){ quicksort(sequence, i, fin); }

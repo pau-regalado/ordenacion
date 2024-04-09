@@ -31,7 +31,7 @@ void heapsort(StaticSequence<Key>& sequence, int size){
     baja(sequence, i, size);
   }
 
-  for (int i = size - 1; i > 0; i--){
+  for (int i = size - 1; i >= 0; i--){
     swap(sequence, 0, i);
     baja(sequence, 0, i);
   }

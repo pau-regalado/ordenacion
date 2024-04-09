@@ -22,8 +22,8 @@ class StaticSequence: public Sequence<Key>{
     }
 
     void randomInitializing() {
-      const int MAX_INT = 9999;
-      const int MIN_INT = 1000;
+      const int MAX_INT = 999;
+      const int MIN_INT = 100;
       std::random_device rd;
       std::mt19937 gen(rd());
       std::uniform_int_distribution<int> dis(MIN_INT, MAX_INT);

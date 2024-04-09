@@ -109,7 +109,6 @@ void Simulator::run(int argc, char* argv[]) {
     sequence->manualInitializing();
   } else if (initType == initTypes::RANDOM) {
     sequence = new StaticSequence<Key>(size);
-    std::cout << "VOOOOOOOOOOOOOOOOOOOOOOOOOYYYY" << std::endl;
     sequence->randomInitializing();
   } else {
     throw std::exception();
@@ -141,10 +140,8 @@ void Simulator::run(int argc, char* argv[]) {
     break;
   }
 
-  mostrar_v(*sequence);
-  std::cout << "VOY A ORDENAR" << std::endl;
+  //mostrar_v(*sequence);
   ord->Sort();
-  std::cout << "YA ORDENE" << std::endl;
 }
 
 #endif

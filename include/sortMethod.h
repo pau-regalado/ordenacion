@@ -40,7 +40,7 @@ SortMethod<Key>::SortMethod(std::string filename) {
   file >> line;
   this->sequence = StaticSequence<Key>(line.size());
 
-  for (int i = 0; i < line.size(); ++i) {
+  for (int i = 1; i <= line.size(); ++i) {
     int value = line[i] - '0';
     this->sequence[Position(i)] = Key(value);
     std::cout << "GUARDE: " << value << std::endl;

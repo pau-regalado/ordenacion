@@ -10,8 +10,8 @@ LIB     		:= lib
 LIBRARIES   :=
 
 EXECUTABLE  := run
-PARAMS    	:= -size 15 -ord seleccion -init random
-PARAMSOPEN  := -ts 5 -fd suma -hash open
+PARAMS    	:= -size 15 -ord quicksort -init random
+PARAMSOPEN  := -size 15 -ord seleccion -init file data1.txt
 
 SOURCES := $(wildcard $(SRC)/*.cc)
 OBJS	:= $(patsubst $(SRC)/%.cc,$(BUILD)/%.o,$(SOURCES))

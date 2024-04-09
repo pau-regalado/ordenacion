@@ -10,7 +10,7 @@ template <class Key>
 void radixSort(StaticSequence<Key>& sequence, int size){
   for (int i = 0; i < kDigits; i++) {
     std::vector<std::vector<int>> cubetas;
-    cubetas.resize(10);
+    cubetas.resize(15);
     
     for (int j = 0; j < size; j++) {
       cubetas[(long(sequence[j]) / int(pow(10, i))) % 10].push_back(sequence[j]);
