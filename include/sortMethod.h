@@ -18,7 +18,6 @@ class SortMethod {
 
   public:
     SortMethod(StaticSequence<Key>& s, unsigned size): sequence(s), size(size) {}
-    SortMethod(std::string filename);
     virtual void Sort() = 0;
     
     std::chrono::microseconds sort_time() {
@@ -27,24 +26,6 @@ class SortMethod {
       auto stop  = std::chrono::high_resolution_clock::now();
       return std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
     }
-
-};
-
-template<class Key>
-SortMethod<Key>::SortMethod(std::string filename) {
-  std::ifstream file("data/" + filename);
-  if (!file.is_open()) {
-    throw std::runtime_error("Error al abrir el archivo.");
-  }
-  std::string line;
-  file >> line;
-  this->sequence = StaticSequence<Key>(line.size());
-
-  for (int i = 1; i <= line.size(); ++i) {
-    int value = line[i] - '0';
-    this->sequence[Position(i)] = Key(value);
-    std::cout << "GUARDE: " << value << std::endl;
-  }
-}    
+};   
 
 #endif

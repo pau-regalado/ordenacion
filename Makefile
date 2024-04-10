@@ -10,8 +10,8 @@ LIB     		:= lib
 LIBRARIES   :=
 
 EXECUTABLE  := run
-PARAMS    	:= -size 15 -ord quicksort -init random
-PARAMSOPEN  := -size 15 -ord seleccion -init file data1.txt
+PARAMS    	:= -size 5 -ord incrDec -init manual
+PARAMSOPEN  := -size 5 -ord incrDec -init file data1.txt
 
 SOURCES := $(wildcard $(SRC)/*.cc)
 OBJS	:= $(patsubst $(SRC)/%.cc,$(BUILD)/%.o,$(SOURCES))
@@ -36,7 +36,7 @@ project:
 run:
 	clear
 	@echo "🚀 Executing..."
-	./$(BIN)/$(EXECUTABLE) $(PARAMS)
+	./$(BIN)/$(EXECUTABLE) $(PARAMSOPEN)
 
 clean:
 	@echo "🧹 Clearing..."

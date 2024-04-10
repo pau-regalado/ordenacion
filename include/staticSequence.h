@@ -12,7 +12,22 @@ class StaticSequence: public Sequence<Key>{
   public:
     StaticSequence(const int size = 0) {
       this->size = size;
-      this->self.resize(size);
+      this->self.resize(size);     
+    }
+
+    StaticSequence(std::string filename) {
+      std::ifstream file("data/" + filename);
+      if (!file.is_open()) {
+        throw std::runtime_error("Error al abrir el archivo.");
+      }
+      
+      std::string line;
+      file >> line;
+      this->size = line.size();
+      this->self.resize(line.size()); 
+      for (int i = 0; i < line.size(); ++i) {
+        self[i] = line[i] - '0';
+      } 
     }
 
     ~StaticSequence(void) {}

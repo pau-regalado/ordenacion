@@ -27,6 +27,7 @@ class Simulator {
 void Simulator::run(int argc, char* argv[]) { 
   bool sizeCheck = false;
   bool ordCheck = false;
+  bool traceType = false;
   bool traceCheck = false;
   int size;
   initTypes initType = initTypes::RANDOM;
@@ -69,39 +70,40 @@ void Simulator::run(int argc, char* argv[]) {
         filename = argv[++i];
       } 
     } else if (strcmp(argv[i], "-trace") == 0 && i + 1 < argc) {
-      char* traceCheck = argv[++i];
-      if (strcmp(traceCheck, "y") == 0) {
-        
-      } else if (strcmp(traceCheck, "n") == 0) {
-        
+      char* traceType = argv[++i];
+      if (strcmp(traceType, "y") == 0) {
+        traceCheck = true;
+      } else if (strcmp(traceType, "n") == 0) {
+        traceCheck = false;
       } 
     }
   }
 
-  if (!filename.empty()) {
+  if (!filename.empty()) {   
+    sequence = new StaticSequence<Key>(filename);
     switch (orderType) {
       case ordTypes::INCRDEC: {
-        ord = new IncrDecMethod<Key>(filename);          
+        ord = new IncrDecMethod<Key>(*sequence, sequence->getSize());          
         break;
       };
       case ordTypes::HEAP: {
-        ord = new HeapSortMethod<Key>(filename);         
+        ord = new HeapSortMethod<Key>(*sequence, sequence->getSize());         
         break;
       };
       case ordTypes::SELECCION: {
-        ord = new SeleccionMethod<Key>(filename);
+        ord = new SeleccionMethod<Key>(*sequence, sequence->getSize());
         break;
       };
       case ordTypes::RADIX: {
-        ord = new RadixSortMethod<Key>(filename); 
+        ord = new RadixSortMethod<Key>(*sequence, sequence->getSize()); 
         break;
       };
       case ordTypes::QUICK: {
-        ord = new QuickSortMethod<Key>(filename);
+        ord = new QuickSortMethod<Key>(*sequence, sequence->getSize());
         break;
       };
     default:
-        ord = new SeleccionMethod<Key>(filename);
+        ord = new SeleccionMethod<Key>(*sequence, sequence->getSize());
       break;
     }
   } else if (initType == initTypes::MANUAL) {
@@ -116,7 +118,7 @@ void Simulator::run(int argc, char* argv[]) {
 
   switch (orderType) {
     case ordTypes::INCRDEC: {
-      ord = new IncrDecMethod<Key>(*sequence, size, 0.2);          
+      ord = new IncrDecMethod<Key>(*sequence, size);          
       break;
     };
     case ordTypes::HEAP: {
