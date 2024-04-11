@@ -8,10 +8,10 @@
 template <class Key>
 class RadixSortMethod: public SortMethod<Key>{
   public:
-  RadixSortMethod(StaticSequence<Key>& sequence, unsigned size): SortMethod<Key>(sequence, size) {}
+  RadixSortMethod(StaticSequence<Key>& sequence, unsigned size, bool traceMode): SortMethod<Key>(sequence, size, traceMode) {}
   RadixSortMethod(std::string filename): SortMethod<Key>(filename) {}
     void Sort() {
-      radixSort(this->sequence, this->size);
+      radixSort(this->sequence, this->size, this->traceMode);
     }
 };
 

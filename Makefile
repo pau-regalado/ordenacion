@@ -11,7 +11,7 @@ LIBRARIES   :=
 
 EXECUTABLE  := run
 PARAMS    	:= -size 5 -ord incrDec 0.5 -init manual
-PARAMSOPEN  := -size 5 -ord incrDec 0.5 -init file data1.txt
+PARAMSOPEN  := -size 5 -ord incrDec 0.5 -init file data1.txt -trace y
 
 SOURCES := $(wildcard $(SRC)/*.cc)
 OBJS	:= $(patsubst $(SRC)/%.cc,$(BUILD)/%.o,$(SOURCES))

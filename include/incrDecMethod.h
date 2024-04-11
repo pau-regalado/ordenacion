@@ -10,9 +10,9 @@ class IncrDecMethod: public SortMethod<Key>{
   private:
     float alpha_;
   public:
-    IncrDecMethod(StaticSequence<Key>& s, float alpha, unsigned size): SortMethod<Key>(s, size), alpha_(alpha) {}
+    IncrDecMethod(StaticSequence<Key>& s, float alpha, unsigned size, bool traceMode): SortMethod<Key>(s, size, traceMode), alpha_(alpha) {}
     void Sort() {
-      incr_dec(this->sequence, alpha_, this->size);
+      incr_dec(this->sequence, alpha_, this->size, this->traceMode);
     } 
 };
 

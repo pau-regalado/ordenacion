@@ -9,10 +9,10 @@ template <class Key>
 class HeapSortMethod: public SortMethod<Key>{
   private:
   public:
-    HeapSortMethod(StaticSequence<Key>& s, unsigned size): SortMethod<Key>(s, size) {}
+    HeapSortMethod(StaticSequence<Key>& s, unsigned size, bool traceMode): SortMethod<Key>(s, size, traceMode) {}
     HeapSortMethod(std::string filename): SortMethod<Key>(filename) {}
     void Sort() {
-      heapsort(this->sequence, this->size);
+      heapsort(this->sequence, this->size, this->traceMode);
     }
 };
 

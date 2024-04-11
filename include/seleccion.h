@@ -5,7 +5,7 @@
 #include "staticSequence.h"
 
 template <class Key>
-void seleccionar(StaticSequence<Key>& sequence, int size){
+void seleccionar(StaticSequence<Key>& sequence, int size, bool traceMode){
   for(int i = 0; i < size; i++){
     int min = i;
     for(int j = i + 1; j < size + 1; j++){
@@ -18,10 +18,12 @@ void seleccionar(StaticSequence<Key>& sequence, int size){
 }
 
 template <class Key>
-void seleccion(StaticSequence<Key>& sequence, int size){
+void seleccion(StaticSequence<Key>& sequence, int size, bool traceMode){
   for(int i = 0; i < size + 1 ; i++){
-    seleccionar(sequence, i);
-    mostrar_v(sequence);
+    seleccionar(sequence, i, traceMode);
+    if (traceMode) {
+      mostrar_v(sequence);
+    }
   }
 }
 

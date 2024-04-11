@@ -4,7 +4,7 @@
 #include "staticSequence.h"
 
 template <class Key>
-void baja(StaticSequence<Key>& sequence, int index, int size){
+void baja(StaticSequence<Key>& sequence, int index, int size, bool traceMode){
 
   int h = index;
   int h1 = 2 * index + 1;
@@ -18,22 +18,24 @@ void baja(StaticSequence<Key>& sequence, int index, int size){
     h = h2;
   }
 
-  if(h != index) {
+  if (h != index) {
     swap(sequence, index, h);
-    mostrar_v(sequence);
-    baja(sequence, h, size);
+    if (traceMode) {
+      mostrar_v(sequence);
+    }
+    baja(sequence, h, size, traceMode);
   }
 }
 
 template <class Key>
-void heapsort(StaticSequence<Key>& sequence, int size){
+void heapsort(StaticSequence<Key>& sequence, int size, bool traceMode){
   for (int i = size / 2; i >= 0; i--){
-    baja(sequence, i, size);
+    baja(sequence, i, size, traceMode);
   }
 
   for (int i = size - 1; i >= 0; i--){
     swap(sequence, 0, i);
-    baja(sequence, 0, i);
+    baja(sequence, 0, i, traceMode);
   }
 }
 

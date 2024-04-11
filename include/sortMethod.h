@@ -15,9 +15,10 @@ class SortMethod {
     unsigned size;
     StaticSequence<Key> sequence;
     int timer_;
+    bool traceMode;
 
   public:
-    SortMethod(StaticSequence<Key>& s, unsigned size): sequence(s), size(size) {}
+    SortMethod(StaticSequence<Key>& s, unsigned size, bool traceMode): sequence(s), size(size), traceMode(traceMode) {}
     virtual void Sort() = 0;
     
     std::chrono::microseconds sort_time() {
@@ -25,6 +26,10 @@ class SortMethod {
       Sort();
       auto stop  = std::chrono::high_resolution_clock::now();
       return std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+    }
+
+    void printSequence() {
+      mostrar_v(this->sequence);
     }
 };   
 

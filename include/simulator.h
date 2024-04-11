@@ -85,27 +85,27 @@ void Simulator::run(int argc, char* argv[]) {
     sequence = new StaticSequence<Key>(filename);
     switch (orderType) {
       case ordTypes::INCRDEC: {      
-        ord = new IncrDecMethod<Key>(*sequence, alpha, sequence->getSize());             
+        ord = new IncrDecMethod<Key>(*sequence, alpha, sequence->getSize(), traceCheck);             
         break;
       };
       case ordTypes::HEAP: {
-        ord = new HeapSortMethod<Key>(*sequence, sequence->getSize());         
+        ord = new HeapSortMethod<Key>(*sequence, sequence->getSize(), traceCheck);         
         break;
       };
       case ordTypes::SELECCION: {
-        ord = new SeleccionMethod<Key>(*sequence, sequence->getSize());
+        ord = new SeleccionMethod<Key>(*sequence, sequence->getSize(), traceCheck);
         break;
       };
       case ordTypes::RADIX: {
-        ord = new RadixSortMethod<Key>(*sequence, sequence->getSize()); 
+        ord = new RadixSortMethod<Key>(*sequence, sequence->getSize(), traceCheck); 
         break;
       };
       case ordTypes::QUICK: {
-        ord = new QuickSortMethod<Key>(*sequence, sequence->getSize());
+        ord = new QuickSortMethod<Key>(*sequence, sequence->getSize(), traceCheck);
         break;
       };
     default:
-        ord = new SeleccionMethod<Key>(*sequence, sequence->getSize());
+        ord = new SeleccionMethod<Key>(*sequence, sequence->getSize(), traceCheck);
       break;
     }
   } else if (initType == initTypes::MANUAL) {
@@ -120,32 +120,35 @@ void Simulator::run(int argc, char* argv[]) {
 
   switch (orderType) {
     case ordTypes::INCRDEC: {
-      ord = new IncrDecMethod<Key>(*sequence, alpha, size);          
+      ord = new IncrDecMethod<Key>(*sequence, alpha, size, traceCheck);          
       break;
     };
     case ordTypes::HEAP: {
-      ord = new HeapSortMethod<Key>(*sequence, size);         
+      ord = new HeapSortMethod<Key>(*sequence, size, traceCheck);         
       break;
     };
     case ordTypes::SELECCION: {
-      ord = new SeleccionMethod<Key>(*sequence, size);
+      ord = new SeleccionMethod<Key>(*sequence, size, traceCheck);
       break;
     };
     case ordTypes::RADIX: {
-      ord = new RadixSortMethod<Key>(*sequence, size); 
+      ord = new RadixSortMethod<Key>(*sequence, size, traceCheck); 
       break;
     };
     case ordTypes::QUICK: {
-      ord = new QuickSortMethod<Key>(*sequence, size);
+      ord = new QuickSortMethod<Key>(*sequence, size, traceCheck);
       break;
     };
   default:
-      ord = new SeleccionMethod<Key>(*sequence, size);
+      ord = new SeleccionMethod<Key>(*sequence, size, traceCheck);
     break;
   }
 
-  //mostrar_v(*sequence);
+  std::cout << "Vector a ordenar: ";
+  mostrar_v(*sequence);
   ord->Sort();
+  std::cout << "Vector a ordenar: ";
+  ord->printSequence();
 }
 
 #endif

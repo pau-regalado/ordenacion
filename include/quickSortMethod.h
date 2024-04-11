@@ -8,9 +8,9 @@
 template <class Key>
 class QuickSortMethod: public SortMethod<Key> {
   public:
-    QuickSortMethod(StaticSequence<Key>& s, unsigned size): SortMethod<Key>(s, size) {}
+    QuickSortMethod(StaticSequence<Key>& s, unsigned size, bool traceMode): SortMethod<Key>(s, size, traceMode) {}
     void Sort() {
-      quicksort(this->sequence, 0, this->size);
+      quicksort(this->sequence, 0, this->size, this->traceMode);
     }
 };
 

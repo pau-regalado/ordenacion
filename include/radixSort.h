@@ -7,7 +7,7 @@
 const int kDigits = 4;
 
 template <class Key>
-void radixSort(StaticSequence<Key>& sequence, int size){
+void radixSort(StaticSequence<Key>& sequence, int size, bool traceMode){
   for (int i = 0; i < kDigits; i++) {
     std::vector<std::vector<int>> cubetas;
     cubetas.resize(15);
@@ -21,7 +21,9 @@ void radixSort(StaticSequence<Key>& sequence, int size){
         sequence[index++] = Key(cubetas[k][l]);
       }
     }
-    mostrar_v(sequence);
+    if (traceMode) {
+      mostrar_v(sequence);
+    }
   }
 }
 #endif
