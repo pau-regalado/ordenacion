@@ -10,13 +10,13 @@ LIB     		:= lib
 LIBRARIES   :=
 
 EXECUTABLE  := run
-PARAMS    	:= -size 5 -ord incrDec 0.5 -init manual
+PARAMS    	:= -size 5 -ord incrDec 0.5 -init ramdom -trace y
 PARAMSOPEN  := -size 5 -ord incrDec 0.5 -init file data1.txt -trace y
 
 SOURCES := $(wildcard $(SRC)/*.cc)
 OBJS	:= $(patsubst $(SRC)/%.cc,$(BUILD)/%.o,$(SOURCES))
 
-.PHONY: all project run clean
+.PHONY: all project run clean base
 
 all: $(BIN)/$(EXECUTABLE)
 
@@ -32,6 +32,11 @@ project:
 	clear
 	@echo "📁 Creating Project Structure..."
 	mkdir -p bin build include src
+
+base:
+	clear
+	@echo "🚀 Executing..."
+	./$(BIN)/$(EXECUTABLE) $(PARAMS)
 
 run:
 	clear
