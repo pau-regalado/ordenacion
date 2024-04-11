@@ -21,10 +21,10 @@ void sort(StaticSequence<Key>& sequence, int size, int delta){
 }
 
 template <class Key>
-void incr_dec(StaticSequence<Key>& sequence, int size){
+void incr_dec(StaticSequence<Key>& sequence, float alpha, int size){
   int delta = size;
   while (delta > 1){
-    delta = int(delta / 2);
+    delta = int(delta * alpha);
     if (delta < 1) {
       delta = 1;
     }

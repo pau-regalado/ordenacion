@@ -30,6 +30,7 @@ void Simulator::run(int argc, char* argv[]) {
   bool traceType = false;
   bool traceCheck = false;
   int size;
+  float alpha;
   initTypes initType = initTypes::RANDOM;
 
   SortMethod<Key>* ord;
@@ -45,6 +46,7 @@ void Simulator::run(int argc, char* argv[]) {
       char* ordType = argv[++i];
       if (strcmp(ordType, "incrDec") == 0) {
         orderType = ordTypes::INCRDEC;
+        alpha = std::stof(argv[++i]);
         ordCheck = true;
       } else if (strcmp(ordType, "heap") == 0) {
         orderType = ordTypes::HEAP;
@@ -82,8 +84,8 @@ void Simulator::run(int argc, char* argv[]) {
   if (!filename.empty()) {   
     sequence = new StaticSequence<Key>(filename);
     switch (orderType) {
-      case ordTypes::INCRDEC: {
-        ord = new IncrDecMethod<Key>(*sequence, sequence->getSize());          
+      case ordTypes::INCRDEC: {      
+        ord = new IncrDecMethod<Key>(*sequence, alpha, sequence->getSize());             
         break;
       };
       case ordTypes::HEAP: {
@@ -118,7 +120,7 @@ void Simulator::run(int argc, char* argv[]) {
 
   switch (orderType) {
     case ordTypes::INCRDEC: {
-      ord = new IncrDecMethod<Key>(*sequence, size);          
+      ord = new IncrDecMethod<Key>(*sequence, alpha, size);          
       break;
     };
     case ordTypes::HEAP: {

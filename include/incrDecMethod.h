@@ -10,12 +10,10 @@ class IncrDecMethod: public SortMethod<Key>{
   private:
     float alpha_;
   public:
-    IncrDecMethod(StaticSequence<Key>& s, unsigned size): SortMethod<Key>(s, size) {}
-    IncrDecMethod(std::string filename): SortMethod<Key>(filename) {}
+    IncrDecMethod(StaticSequence<Key>& s, float alpha, unsigned size): SortMethod<Key>(s, size), alpha_(alpha) {}
     void Sort() {
-      incr_dec(this->sequence, this->size);
-    }
-  
+      incr_dec(this->sequence, alpha_, this->size);
+    } 
 };
 
 #endif

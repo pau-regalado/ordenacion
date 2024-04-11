@@ -10,8 +10,8 @@ LIB     		:= lib
 LIBRARIES   :=
 
 EXECUTABLE  := run
-PARAMS    	:= -size 5 -ord incrDec -init manual
-PARAMSOPEN  := -size 5 -ord incrDec -init file data1.txt
+PARAMS    	:= -size 5 -ord incrDec 0.5 -init manual
+PARAMSOPEN  := -size 5 -ord incrDec 0.5 -init file data1.txt
 
 SOURCES := $(wildcard $(SRC)/*.cc)
 OBJS	:= $(patsubst $(SRC)/%.cc,$(BUILD)/%.o,$(SOURCES))
