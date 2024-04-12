@@ -10,8 +10,8 @@ LIB     		:= lib
 LIBRARIES   :=
 
 EXECUTABLE  := run
-PARAMS    	:= -size 5 -ord incrDec 0.5 -init ramdom -trace y
-PARAMSOPEN  := -size 5 -ord incrDec 0.5 -init file data1.txt -trace y
+PARAMS    	:= -size 9 -ord quicksort -init ramdom -trace y
+PARAMSOPEN  := -size 9 -ord quicksort -init file data1.txt -trace y
 
 SOURCES := $(wildcard $(SRC)/*.cc)
 OBJS	:= $(patsubst $(SRC)/%.cc,$(BUILD)/%.o,$(SOURCES))
